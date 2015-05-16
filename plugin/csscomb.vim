@@ -11,7 +11,7 @@ function! g:CSScomb(count, line1, line2)
 
     let tempFile = tempname() . '.' . &filetype
     call writefile(content, tempFile)
-    system('csscomb ' . shellescape(tempFile))
+    call system('csscomb ' . shellescape(tempFile))
     let lines = readfile(tempFile)
 
     call setline(a:line1, lines)
