@@ -11,10 +11,13 @@ function! g:CSScomb(count, line1, line2)
 
     let tempFile = tempname() . '.' . &filetype
     call writefile(content, tempFile)
-    call system('csscomb ' . shellescape(tempFile))
-    let lines = readfile(tempFile)
-
-    call setline(a:line1, lines)
+    let systemOutput = system('csscomb ' . shellescape(tempFile))
+    if len(systemOutput)
+        echoerr split(systemOutput, "\n")[1]
+    else
+        let lines = readfile(tempFile)
+        call setline(a:line1, lines)
+    endif
 endfunction
 
 command! -nargs=? -range=% CSScomb :call g:CSScomb(<count>, <line1>, <line2>, <f-args>)
