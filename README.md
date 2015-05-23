@@ -22,19 +22,19 @@ npm install -g csscomb
 
 ```
 cd ~/.vim/bundle
-git clone https://github.com/miripiruni/CSScomb-for-Vim.git
+git clone https://github.com/csscomb/vim-csscomb.git
 ```
 
 ### With Vundle
 Add this to .vimrc:
 ```
-Bundle 'git://github.com/miripiruni/CSScomb-for-Vim.git'
+Bundle 'git://github.com/csscomb/vim-csscomb.git'
 ```
 
 ### With NeoBundle
 Add this to .vimrc:
 ```
-NeoBundle 'faceleg/vim-csscomb', {
+NeoBundle 'csscomb/vim-csscomb', {
         \ 'build': {
         \     'unix': 'npm install -g csscomb',
         \     'mac': 'npm install -g csscomb'
@@ -43,7 +43,7 @@ NeoBundle 'faceleg/vim-csscomb', {
 
 ### Manual without plugins manager
 ```
-git clone https://github.com/miripiruni/CSScomb-for-Vim.git csscomb
+git clone https://github.com/csscomb/vim-csscomb.git csscomb
 cp -r csscomb/plugin/* ~/.vim/plugin/
 ```
 
