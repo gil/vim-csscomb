@@ -34,11 +34,7 @@ Bundle 'git://github.com/csscomb/vim-csscomb.git'
 ### With NeoBundle
 Add this to .vimrc:
 ```
-NeoBundle 'csscomb/vim-csscomb', {
-        \ 'build': {
-        \     'unix': 'npm install -g csscomb',
-        \     'mac': 'npm install -g csscomb'
-        \ }}
+NeoBundle 'csscomb/vim-csscomb'
 ```
 
 ### Manual without plugins manager
@@ -59,5 +55,5 @@ Vim command:
 " Map bc to run CSScomb. bc stands for beautify css
 autocmd FileType css noremap <buffer> <leader>bc :CSScomb<CR>
 " Automatically comb your CSS on save
-autocmd BufWritePre,FileWritePre *.css,*.scss,*.sass silent! :CSScomb<CR>
+autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :CSScomb<CR>
 ```
