@@ -10,9 +10,11 @@ For more info, online demo and tests see [csscomb.com](http://csscomb.com/)
 
 ## The Requirements
 
-CSScomb is written in pure PHP, without any external libraries or dependencies.
-See details at [wiki](https://github.com/miripiruni/CSScomb/wiki/Requirements).
+CSScomb is written in pure JavaScript. Install with:
 
+```BASH
+npm install -g csscomb
+```
 
 ## Installation
 
@@ -20,18 +22,24 @@ See details at [wiki](https://github.com/miripiruni/CSScomb/wiki/Requirements).
 
 ```
 cd ~/.vim/bundle
-git clone https://github.com/miripiruni/CSScomb-for-Vim.git
+git clone https://github.com/csscomb/vim-csscomb.git
 ```
 
 ### With Vundle
 Add this to .vimrc:
 ```
-Bundle 'git://github.com/miripiruni/CSScomb-for-Vim.git'
+Bundle 'git://github.com/csscomb/vim-csscomb.git'
+```
+
+### With NeoBundle
+Add this to .vimrc:
+```
+NeoBundle 'csscomb/vim-csscomb'
 ```
 
 ### Manual without plugins manager
 ```
-git clone https://github.com/miripiruni/CSScomb-for-Vim.git csscomb
+git clone https://github.com/csscomb/vim-csscomb.git csscomb
 cp -r csscomb/plugin/* ~/.vim/plugin/
 ```
 
@@ -39,4 +47,13 @@ cp -r csscomb/plugin/* ~/.vim/plugin/
 Vim command:
 ```
 :CSScomb
+```
+
+## Suggested Configuration
+
+```VIML
+" Map bc to run CSScomb. bc stands for beautify css
+autocmd FileType css noremap <buffer> <leader>bc :CSScomb<CR>
+" Automatically comb your CSS on save
+autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :CSScomb<CR>
 ```

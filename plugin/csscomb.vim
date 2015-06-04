@@ -7,10 +7,17 @@
 let g:CSScombPluginDir = fnamemodify(expand("<sfile>"), ":h")
 
 function! g:CSScomb(count, line1, line2)
-    let content = join(getline(a:line1, a:line2), "\n")
-    let res = system("php ".fnameescape(g:CSScombPluginDir."/exec.php"), content)
-    let lines = split(res, "\n")
-    call setline(a:line1, lines)
+    let content = getline(a:line1, a:line2)
+
+    let tempFile = tempname() . '.' . &filetype
+    call writefile(content, tempFile)
+    let systemOutput = system('csscomb ' . shellescape(tempFile))
+    if len(systemOutput)
+        echoerr split(systemOutput, "\n")[1]
+    else
+        let lines = readfile(tempFile)
+        call setline(a:line1, lines)
+    endif
 endfunction
 
 command! -nargs=? -range=% CSScomb :call g:CSScomb(<count>, <line1>, <line2>, <f-args>)
