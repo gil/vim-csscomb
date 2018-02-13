@@ -6,12 +6,16 @@
 
 let g:CSScombPluginDir = fnamemodify(expand("<sfile>"), ":h")
 
+if !exists('g:CSScombArguments')
+    let g:CSScombArguments = ''
+endif
+
 function! g:CSScomb(count, line1, line2)
     let content = getline(a:line1, a:line2)
 
     let tempFile = tempname() . '.' . &filetype
     call writefile(content, tempFile)
-    let systemOutput = system('csscomb ' . shellescape(tempFile))
+    let systemOutput = system('csscomb ' . g:CSScombArguments . ' ' . shellescape(tempFile))
     if len(systemOutput)
         echoerr split(systemOutput, "\n")[1]
     else
