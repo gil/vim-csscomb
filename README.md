@@ -57,5 +57,5 @@ autocmd FileType css noremap <buffer> <leader>bc :CSScomb<CR>
 " Automatically comb your CSS on save
 autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :CSScomb
 " Passing extra arguments to CSScomb
-let g:CSScombArgumentsa = '--config ~/.csscomb.json --tty-mode'
+let g:CSScombArguments = '--config ~/.csscomb.json --tty-mode'
 ```
