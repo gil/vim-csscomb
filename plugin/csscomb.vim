@@ -15,7 +15,7 @@ function! g:CSScomb(count, line1, line2)
 
     let tempFile = tempname() . '.' . &filetype
     call writefile(content, tempFile)
-    let systemOutput = system('csscomb ' . g:CSScombArguments . ' ' . shellescape(tempFile))
+    let systemOutput = system('cat ' . shellescape(tempFile) . ' | csscomb ' . g:CSScombArguments . ' > ' shellescape(tempFile))
     if len(systemOutput)
         echoerr split(systemOutput, "\n")[1]
     else
